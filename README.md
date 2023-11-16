@@ -15,6 +15,14 @@
     <li>Messagebox</li>
     <li>mysql.connector</li>
 </ul>
+<h2>Commands for mysql to Gran Users</h2>
+<ul>
+    <p>This statement will grant all users on all hosts all privileges on all databases.</p>
+    <li>GRANT ALL PRIVILEGES ON *.* TO ''@'%';</li>
+    <p>Once you have granted all users the desired privileges, you need to flush the privileges table to make the changes take effect. You can do this with the following SQL statement:</p>
+    <li>FLUSH PRIVILEGES;
+</li>
+</ul>
 
 <h3>To install external modules:</h3>
 <p><li>Run pip install tkinter</li></p>
