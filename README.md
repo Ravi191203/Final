@@ -32,7 +32,6 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> FLUSH PRIVILEGES;
 Query OK, 0 rows affected (0.00 sec)
-
 </code>
 
 <h3>To install external modules:</h3>
@@ -45,3 +44,7 @@ Query OK, 0 rows affected (0.00 sec)
 <h3>Screenshot/GIF of this project.</h3>
 
 ![Bill](https://github.com/Ravi191203/Final/blob/9d2f0622b099ba7c4712d67605c21a37b72157ad/Screenshot%20(6).png)
+
+<h1 style="font-family:Bradley Hand ITC"><c>Thank</c></h1>
+<br>
+<h1 style="font-family:Bradley Hand ITC"><c>Thank</c></h1>
