@@ -45,6 +45,4 @@ Query OK, 0 rows affected (0.00 sec)
 
 ![Bill](https://github.com/Ravi191203/Final/blob/9d2f0622b099ba7c4712d67605c21a37b72157ad/Screenshot%20(6).png)
 
-<h1 style="font-family:Bradley Hand ITC"><c>Thank</c></h1>
-<br>
-<h1 style="font-family:Bradley Hand ITC"><c>Thank</c></h1>
+<h1 style="font-family:Bradley Hand ITC"><c>Thank You</c></h1>
