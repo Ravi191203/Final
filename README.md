@@ -16,6 +16,7 @@
     <li>mysql.connector</li>
 </ul>
 <br>
+<h2>GUI</h2>
 <table>
 <thead>
   <tr>
