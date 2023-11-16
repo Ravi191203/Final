@@ -15,7 +15,38 @@
     <li>Messagebox</li>
     <li>mysql.connector</li>
 </ul>
-<h2>Commands for mysql to Gran Users</h2>
+<br>
+<table>
+<thead>
+  <tr>
+    <th>Widget Class</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Label</td>
+    <td>A widget used to display text on the screen.</td>
+  </tr>
+  <tr>
+    <td>Button</td>
+    <td>A button that can contain text and can perform an action when clicked</td>
+  </tr>
+  <tr>
+    <td>Entry</td>
+    <td>A text entry widget that allows only a single line of text</td>
+  </tr>
+  <tr>
+    <td>Text</td>
+    <td>A text entry widget that allows multiline text entry</td>
+  </tr>
+  <tr>
+    <td>Frame</td>
+    <td>A rectangular region used to group related widgets or provide padding between widgets</td>
+  </tr>
+</tbody>
+</table>
+<h2>Commands for mysql to Grant Users</h2>
 <ul>
     <li><b>This statement will grant all users on all hosts all privileges on all databases.</b></li>
     <p>GRANT ALL PRIVILEGES ON *.* TO ''@'%';</p>
