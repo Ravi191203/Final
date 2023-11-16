@@ -32,6 +32,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> FLUSH PRIVILEGES;
 Query OK, 0 rows affected (0.00 sec)
+
 </code>
 
 <h3>To install external modules:</h3>
