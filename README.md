@@ -17,11 +17,11 @@
 </ul>
 <h2>Commands for mysql to Gran Users</h2>
 <ul>
-    <p><b>This statement will grant all users on all hosts all privileges on all databases.</p>
-    <li>GRANT ALL PRIVILEGES ON *.* TO ''@'%';</li>
-    <p><b>Once you have granted all users the desired privileges, you need to flush the privileges table to make the changes take effect. You can do this with the following SQL statement:</p>
-    <li>FLUSH PRIVILEGES;
-</li>
+    <li><b>This statement will grant all users on all hosts all privileges on all databases.</b></li>
+    <p>GRANT ALL PRIVILEGES ON *.* TO ''@'%';</p>
+    <li><b>Once you have granted all users the desired privileges, you need to flush the privileges table to make the changes take effect. You can do this with the following SQL statement:</b></li>
+    <p>FLUSH PRIVILEGES;
+</p>
 </ul>
 
 <h3>To install external modules:</h3>
