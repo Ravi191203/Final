@@ -23,6 +23,16 @@
     <p>FLUSH PRIVILEGES;
 </p>
 </ul>
+<br>
+<p><b>EXAMPLE</b></p>
+<code>mysql> GRANT ALL PRIVILEGES ON *.* TO ''@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
+</code>
 
 <h3>To install external modules:</h3>
 <p><li>Run pip install tkinter</li></p>
