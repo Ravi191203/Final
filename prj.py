@@ -3,6 +3,7 @@ import random
 import os
 from tkinter import messagebox
 import mysql.connector
+import webbrowser
 
 # Replace these placeholders with your actual database credentials
 db_host = "localhost"
@@ -35,17 +36,25 @@ except mysql.connector.Error as err:
 
 class Bill_App:
     def __init__(self, root):
-        welcome_label = Label(root, text="Namasthe...! Welcome To Billing Software...☺", font=('Bradley Hand ITC', 16, 'bold'), fg="dark blue")
-        welcome_label.pack()
         self.root = root
         self.root.geometry("1400x700+0+0")
         self.root.title("Billing Software")
         bg_color = "rosybrown2"
-        title = Label(self.root, text="Billing Software", bd=12, relief=GROOVE,
-                      bg=bg_color, fg="black", font=("times new roman",25, "bold"), pady=2).pack(fill=X)
-        watermark_label = Label(root, text="By RRGS, Sainath Lal R, Prajwal A J                         From Final Year(BCA)", font=('arial', 14,"bold"), fg="khaki", bg="black")
+        title = Label(self.root, text="Billing Software", bd=18, relief=GROOVE,
+                      bg=bg_color, fg="black", font=("times new roman",25, "bold"), pady=4).pack(fill=X)
+        watermark_label = Label(root, text="        By RRGS, Sainath Lal R, Prajwal A J                                     Final Year(BCA)", font=('arial', 14,"bold"), fg="white", bg="black")
         watermark_label.pack(side=BOTTOM, fill=X)
         root.protocol("WM_DELETE_WINDOW", self.on_exit)
+        self.welcome_label = Label(root, text="Namasthe...🙏\n😍Welcome To Billing Software...☺💕", font=('Berlin Sans FB Demi', 30, 'bold'), fg='black', bg='white')
+        self.welcome_label.place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.root.after(5000, self.remove_welcome_label)
+        
+    def remove_welcome_label(self):
+        # Remove the welcome label after 3 seconds
+        self.welcome_label.destroy()
+
+        bg_color = "rosybrown2"
+        
         # Variables
         self.cust_name = StringVar()
         self.cust_phone = StringVar()
@@ -93,7 +102,7 @@ class Bill_App:
 
         # Customer Details Frame
         F1 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Customer Details", font=("times new roman", 15, "bold"),
-                        fg="red3", bg=bg_color)
+                        fg="blue", bg=bg_color)
         F1.place(x=0, y=80, relwidth=1)
 
         cname_lbl = Label(F1, text="Customer Name", bg=bg_color, fg="black", font=("times new roman", 15, "bold")).grid(
@@ -117,8 +126,11 @@ class Bill_App:
                                                                                                                   padx=10,
                                                                                                                   pady=5)
 
-        bill_btn = Button(F1, text="Search", width=10, pady=5, font=("times new roman", 12, "bold"), bd=7, command=self.find_bill).grid(
+        bill_btn = Button(F1, text="🔍", width=6, pady=5, font=("Segoe UI Emoji", 16, "bold"),fg="red1", bd=7, command=self.find_bill).grid(
             row=0, column=6, padx=10, pady=10)
+
+        delete_btn = Button(F1, text="🗑", width=6, pady=5, font=("Segoe UI Emoji", 16),fg="blue", bd=7, command=self.delete_bill).grid(
+            row=0, column=7, padx=10, pady=10)
 
         # Cosmetic Details Frame
         F2 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Cosmetic Details", font=("times new roman", 15, "bold"),
@@ -270,26 +282,29 @@ class Bill_App:
         c3_txt = Entry(F6, width=18, textvariable=self.cold_drink_tax, font=("times new roman", 10, "bold"), bd=7,
                        relief=SUNKEN).grid(row=2, column=3, padx=10, pady=1)
 
-        btn_F = Frame(F6, bd=7, relief=GROOVE)
-        btn_F.place(x=750, width=700, height=105)
+        #Buttons
 
-        total_btn = Button(btn_F, command=self.total, text="Total", bg="rosybrown2", fg="black", pady=15, width=10,
-                           font=("times new roman", 14, "bold")).grid(row=0, column=0, padx=5, pady=5)
-        generate_bill_btn = Button(btn_F, text="Generate Bill", command=self.bill_area, bg="rosybrown2", fg="black",
-                                   pady=15, width=10, font=("times new roman", 14, "bold")).grid(row=0, column=1, padx=5,
+        btn_F = Frame(F6, bd=7, relief=GROOVE)
+        btn_F.place(x=750, width=550, height=100)
+
+        total_btn = Button(btn_F, command=self.total, text="Total\n", bg="rosybrown2", fg="black", pady=10, width=10,
+                           font=("times new roman", 12, "bold")).grid(row=0, column=0, padx=1, pady=1)
+        generate_bill_btn = Button(btn_F, text="Generate\nBill", command=self.bill_area, bg="rosybrown2", fg="black",
+                                   pady=10, width=10, font=("times new roman", 12, "bold")).grid(row=0, column=1, padx=5,
                                                                                                   pady=5)
 
-        delete_btn = Button(btn_F, text="Delete Bill", command=self.delete_bill, bg="rosybrown2", fg="black", pady=15,
-                            width=10, font=("times new roman", 14, "bold"))
-        delete_btn.grid(row=0, column=5, padx=5, pady=5)
+        open_url = Button(btn_F, text="Submitted\nTo", command=self.open_url, bg="rosybrown2", fg="black", pady=10,
+                            width=10, font=("times new roman", 12, "bold")).grid(row=0, column=5, padx=5, pady=5)
         
-        clear_btn = Button(btn_F, text="Clear", command=self.clear_data, bg="rosybrown2", fg="black", pady=15, width=10,
-                           font=("times new roman", 14, "bold")).grid(row=0, column=2, padx=5, pady=5)
+        clear_btn = Button(btn_F, text="Clear\n", command=self.clear_data, bg="rosybrown2", fg="black", pady=10, width=10,
+                           font=("times new roman", 12, "bold")).grid(row=0, column=2, padx=5, pady=5)
         
-        exit_btn = Button(btn_F, text="Exit", command=self.exit_app, bg="rosybrown2", fg="black", pady=15, width=10,
-                          font=("times new roman", 14, "bold")).grid(row=0, column=4, padx=5, pady=5)
+        exit_btn = Button(btn_F, text="Exit\n", command=self.exit_app, bg="rosybrown2", fg="black", pady=10, width=10,
+                          font=("times new roman", 12, "bold")).grid(row=0, column=4, padx=1, pady=1)
 
         self.welcome_bill()
+
+        #Functions
 
     def total(self):
         self.c_s_p = self.soap.get() * 40
@@ -383,23 +398,23 @@ class Bill_App:
 
             # Grocery Bill
             if self.rice.get() != 0:
-                self.txtarea.insert(END, f"\n Rice\t\t{self.rice.get()}\t\t{self.g_r_p}")
+                self.txtarea.insert(END, f"\n Rice\t\t\t{self.rice.get()}\t\t{self.g_r_p}")
             if self.food_oil.get() != 0:
                 self.txtarea.insert(END, f"\n Food Oil\t\t{self.food_oil.get()}\t\t{self.g_fo_p}")
             if self.daal.get() != 0:
-                self.txtarea.insert(END, f"\n Daal\t\t{self.daal.get()}\t\t{self.g_d_p}")
+                self.txtarea.insert(END, f"\n Daal\t\t\t{self.daal.get()}\t\t{self.g_d_p}")
             if self.wheat.get() != 0:
                 self.txtarea.insert(END, f"\n Wheat\t\t{self.wheat.get()}\t\t{self.g_w_p}")
             if self.sugar.get() != 0:
-                self.txtarea.insert(END, f"\n Sugar\t\t{self.sugar.get()}\t\t{self.g_s_p}")
+                self.txtarea.insert(END, f"\n Sugar\t\t\t{self.sugar.get()}\t\t{self.g_s_p}")
             if self.tea.get() != 0:
-                self.txtarea.insert(END, f"\n Tea\t\t{self.tea.get()}\t\t{self.g_t_p}")
+                self.txtarea.insert(END, f"\n Tea\t\t\t\t{self.tea.get()}\t\t{self.g_t_p}")
 
             # Cold Drink Bill
             if self.maza.get() != 0:
                 self.txtarea.insert(END, f"\n Maza\t\t{self.maza.get()}\t\t{self.cd_m_p}")
             if self.coke.get() != 0:
-                self.txtarea.insert(END, f"\n Coke\t\t{self.coke.get()}\t\t{self.cd_c_p}")
+                self.txtarea.insert(END, f"\n Coke\t\t\t{self.coke.get()}\t\t{self.cd_c_p}")
             if self.frooti.get() != 0:
                 self.txtarea.insert(END, f"\n Frooti\t\t{self.frooti.get()}\t\t{self.cd_f_p}")
             if self.thumbs_up.get() != 0:
@@ -449,6 +464,12 @@ class Bill_App:
 
         if present == "no":
             messagebox.showerror("Error", "Invalid Bill Number")
+    def open_url(self):
+        # Specify the URL you want to open
+        url = "https://www.jsscacs.edu.in/departments/ug/computer-science/ms-roopa"
+
+        # Open the URL in the default web browser
+        webbrowser.open(url)
 
 
     def clear_data(self):
